@@ -1,10 +1,20 @@
+/* Fonts */
+@font-face {
+    font-family: secretcode;
+    src: url(fonts/secrcode.ttf) format('truetype'),
+		url(fonts/secrcode.woff) format('woff');
+}
+body, input, select, textarea, button, .ui-btn {
+	font-family: Century Gothic, sans-serif;
+}
+
 /* Background image */
 body {
 	background-image: url("img/background.png");
 	background-attachment: fixed;
 }
 .ui-page, .ui-panel-wrapper {
-	background: transparent !important;
+	background-color: transparent !important;
 }
 
 /* Header images */
@@ -17,6 +27,44 @@ body {
 	margin-right: -1em;
 	width: calc(100% + 2em);
 }
+/* and caption */
+.header-caption {
+	text-align: center;
+	font-style: italic;
+	font-size: 1.6em;
+}
+
+/* Image based buttons with inline captions */
+.ui-btn-img {
+	padding: 0;
+	line-height: 0;
+	border-radius: 0.4em;
+}
+.ui-btn-img img {
+	max-width: 100%;
+	position: relative;
+}
+.ui-btn-img span {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	bottom: 0;
+	background-color: rgba(255, 255, 255, 0.6);
+	line-height: 1;
+}
+
+/* Fade images in */
+.ui-img-blur img {
+	-webkit-filter: blur(2px);
+	filter: blur(2px);
+	transition: 0.2s -webkit-filter, filter;
+}
+.ui-img-blur:hover img {
+	-webkit-filter: blur(0);
+	filter: blur(0);
+}
 
 /* Desktop class devices */
 @media only screen and (min-width: 600px) {
@@ -26,4 +74,14 @@ body {
 		margin-right: auto !important;
 		position: relative !important;
 	}
+}
+
+/* Fix jQuery mobile navbar bug */
+.ui-navbar li:first-child .ui-btn {
+	border-left-width: 0;
+}
+/* Fix jQuery mobile offset bug with grids */
+.ui-grid-a, .ui-grid-b, ui-grid-c {
+	margin-left: -5px;
+	margin-right: -5px;
 }
