@@ -1,0 +1,14 @@
+/* Background image hack */
+.ui-page {
+	background: transparent;
+}
+
+/* Desktop class devices */
+@media only screen and (min-width: 600px) {
+	.ui-max-width {
+		width: 600px !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		position: relative !important;
+	}
+}
