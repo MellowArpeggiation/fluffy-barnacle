@@ -1,6 +1,21 @@
-/* Background image hack */
-.ui-page {
-	background: transparent;
+/* Background image */
+body {
+	background-image: url("img/background.png");
+	background-attachment: fixed;
+}
+.ui-page, .ui-panel-wrapper {
+	background: transparent !important;
+}
+
+/* Header images */
+.header-img {
+	width: 100%;
+}
+.header-img-attach {
+	margin-top: -1em;
+	margin-left: -1em;
+	margin-right: -1em;
+	width: calc(100% + 2em);
 }
 
 /* Desktop class devices */
