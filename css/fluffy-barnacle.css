@@ -17,6 +17,26 @@ body {
 	background-color: transparent !important;
 }
 
+/* Scroll element */
+.scroll-element {
+	padding: 1em;
+	width: auto;
+/*	-webkit-transition: height 0.5s;
+	transition: height 0.5s;*/
+}
+.scroll-element img {
+	height: inherit;
+}
+
+.scroll-element.top {
+	background-color: transparent !important;
+	border-color: transparent !important;
+}
+
+.scroll-element.affix {
+	height: 2em;
+}
+
 /* Header images */
 .header-img {
 	width: 100%;

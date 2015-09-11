@@ -11,10 +11,16 @@ function scrollImage(timestamp) {
 	
 	console.log(timestamp);
 	
-//	scrollElement.height(600 - $(window).scrollTop() * 10);
+	if ($(window).scrollTop() > 10) {
+		scrollElement.removeClass("top");
+		scrollElement.addClass("affix");
+	} else {
+		scrollElement.removeClass("affix");
+		scrollElement.addClass("top");
+	}
 }
 
-$(document).on("scrollstart", function (event) {
+/*$(document).on("scrollstart", function (event) {
 	'use strict';
 	scrollElement = $(".scroll-element");
 	console.log(event);
@@ -25,4 +31,4 @@ $(document).on("scrollstop", function (event) {
 	'use strict';
 	console.log(event);
 	cancelAnimationFrame(scrollAnimation);
-});
+});*/
