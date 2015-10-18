@@ -27,18 +27,15 @@
 		<section data-role="page" id="index">
 			<main data-role="content" class="ui-content ui-max-width">
 				<img class="header-img" src="img/logo-web.svg">
-				<p class="header-caption" id="subtitle"></p>
-                <script>
-                    setSubtitle($("#subtitle"), 5000);
-                </script>
-				<a href="cakes.html" class="ui-btn ui-btn-img" data-transition="slide" data-prefetch>
+				<p class="header-caption random-subtitle"></p>
+				<a href="#explore-cakes" class="ui-btn ui-btn-img">
 					<img src="img/cake1.jpg">
 					<span>Browse Cakes</span>
                     <!-- Collate all the available cakes in the database -->
 				</a>
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
-						<a href="stores.html" class="ui-btn ui-btn-img" data-transition="slide" data-prefetch>
+						<a href="#stores" class="ui-btn ui-btn-img">
 							<img src="img/cake2.jpg">
 							<span>Browse Stores</span>
                             <!-- Collate all the available stores -->
@@ -78,6 +75,63 @@
 			</div>
 			<div data-role="footer">
 				<h2>Copyright 2015 George Paton</h2>
+			</div>
+		</section>
+        
+        
+        
+        <!-- Explore cakes page -->
+        <section id="explore-cakes" data-role="page">
+			<div data-role="header" data-position="fixed">
+                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
+				<h1>Explore Cakes</h1>
+			</div>
+			<div data-role="content" class="ui-content ui-max-width">
+                
+			</div>
+            <div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#explore-cakes" class="ui-btn-active ui-state-persist" data-transition="none">Explore</a></li>
+						<li><a href="#search-cakes" data-transition="none">Search</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+        
+        <!-- Search cakes page -->
+        <section id="search-cakes" data-role="page">
+			<div data-role="header" data-position="fixed">
+                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
+				<h1>Search Cakes</h1>
+			</div>
+			<div data-role="content" class="ui-content ui-max-width">
+                <form class="affix-header">
+                    <input type="search" name="cake-search" id="cake-search" value="">
+                </form>
+			</div>
+            <div data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#explore-cakes" data-transition="none">Explore</a></li>
+						<li><a href="#search-cakes" class="ui-btn-active ui-state-persist" data-transition="none">Search</a></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+        
+        
+        
+        <!-- Stores page -->
+        <section id="stores" data-role="page">
+			<div data-role="header" data-position="fixed">
+                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
+				<h1>Stores</h1>
+			</div>
+			<div data-role="content" class="ui-content ui-max-width">
+                <form class="affix-header">
+                    <input type="search" name="cake-search" id="cake-search" value="">
+                </form>
 			</div>
 		</section>
 	</body>

@@ -1,7 +1,7 @@
 /*jslint browser: true, devel: true*/
 
 /*global $, requestAnimationFrame, cancelAnimationFrame,
-clearIntervals*/
+clearIntervals, setSubtitle*/
 
 var scrollAnimation,
 	scrollElement;
@@ -23,6 +23,8 @@ function init() {
 	// Called on initial page load and after every page transition
 	
 	clearIntervals();
+    
+    setSubtitle($(".random-subtitle"), 4000);
     
     $(".ui-star-submit").hide();
 	
