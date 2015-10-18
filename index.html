@@ -31,14 +31,14 @@
                 <script>
                     setSubtitle($("#subtitle"), 5000);
                 </script>
-				<a href="cakes.html" class="ui-btn ui-btn-img" data-transition="slide">
+				<a href="cakes.html" class="ui-btn ui-btn-img" data-transition="slide" data-prefetch>
 					<img src="img/cake1.jpg">
 					<span>Browse Cakes</span>
                     <!-- Collate all the available cakes in the database -->
 				</a>
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
-						<a href="stores.html" class="ui-btn ui-btn-img" data-transition="slide">
+						<a href="stores.html" class="ui-btn ui-btn-img" data-transition="slide" data-prefetch>
 							<img src="img/cake2.jpg">
 							<span>Browse Stores</span>
                             <!-- Collate all the available stores -->
@@ -62,6 +62,18 @@
 			</div>
 			<div data-role="content">
 				<p><img src="img/logo-web.svg" class="img-inline-20">, founded in 2015, will deliver you cakes</p>
+                <form>
+					<p>How would you rate your experience?</p>
+					<div class="ui-star-rating">
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+					</div>
+					
+					<button class="ui-star-submit">Submit</button>
+				</form>
 				<p><em>Application developed by George Paton, a student at Deakin, as part of SIT313.</em></p>
 			</div>
 			<div data-role="footer">

@@ -98,6 +98,24 @@ body {
     height: 20px;
 }
 
+/* Star rating control */
+.ui-star-rating {
+	font-size: 2em;
+	text-align: center;
+	/* RTL hack (css can only select successive siblings) */
+	direction: rtl;
+	margin-bottom: 1em;
+	cursor: pointer;
+    color: #f1d4af;
+}
+.ui-star-rating .fa-star-o.active:before, .ui-star-rating .fa-star-o.active ~ .fa-star-o:before {
+	content: "\f005"
+}
+.ui-star-rating .fa-star-o:hover:before, .ui-star-rating .fa-star-o:hover ~ .fa-star-o:before {
+	color: #E08E79;
+	content: "\f005"
+}
+
 /* Desktop class devices */
 @media only screen and (min-width: 600px) {
 	.ui-max-width {

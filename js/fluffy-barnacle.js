@@ -1,6 +1,7 @@
 /*jslint browser: true, devel: true*/
 
-/*global $, requestAnimationFrame, cancelAnimationFrame*/
+/*global $, requestAnimationFrame, cancelAnimationFrame,
+clearIntervals*/
 
 var scrollAnimation,
 	scrollElement;
@@ -14,6 +15,39 @@ var subtitles = [
     "A cake for all",
     "Oh my god, regret cake?"
 ];
+
+var intervals = [];
+
+function init() {
+	'use strict';
+	// Called on initial page load and after every page transition
+	
+	clearIntervals();
+    
+    $(".ui-star-submit").hide();
+	
+	$(".ui-star-rating .fa-star-o").on("click", function () {
+		$(this).parent().children().each(function () {
+			$(this).removeClass("active");
+		});
+		$(this).addClass("active");
+        
+        $(".ui-star-submit").show(400);
+	});
+}
+
+function clearIntervals() {
+	'use strict';
+	// Remove all intervals on page change, prevent buildup of empty fired functions
+	
+	var i;
+	for (i = 0; i < intervals.length; i += 1) {
+		window.clearInterval(intervals[i]);
+	}
+	
+	intervals = [];
+}
+
 
 function scrollImage(timestamp) {
 	'use strict';
@@ -42,13 +76,20 @@ function getRandomSubtitle(current) {
 function setSubtitle(element, interval) {
     'use strict';
     element.html(getRandomSubtitle());
-    setInterval(function () {
+    intervals.push(setInterval(function () {
         element.fadeOut(500, function () {
             element.html(getRandomSubtitle(element.html()));
         });
         element.fadeIn(500);
-    }, interval);
+    }, interval));
 }
+
+$(document).ready(function () {
+	'use strict';
+	
+	init();
+	$("body").on("pagecontainerchange", init);
+});
 
 /*$(document).on("scrollstart", function (event) {
 	'use strict';
