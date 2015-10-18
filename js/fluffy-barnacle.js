@@ -9,7 +9,10 @@ var subtitles = [
     "Let them eat cake",
     "I want that cake",
     "Love is like a good cake",
-    "Cake as a way of life"
+    "Cake as a way of life",
+    "I made you a cake",
+    "A cake for all",
+    "Oh my god, regret cake?"
 ];
 
 function scrollImage(timestamp) {
