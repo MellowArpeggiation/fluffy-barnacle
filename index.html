@@ -54,10 +54,10 @@
         
         <!-- About page -->
         <section id="about" data-role="page">
-			<div data-role="header">
+			<header data-role="header">
 				<h1>About</h1>
-			</div>
-			<div data-role="content">
+			</header>
+			<main data-role="content">
 				<p><img src="img/logo-web.svg" class="img-inline-20">, founded in 2015, will deliver you cakes</p>
                 <form onsubmit="clearStars()">
 					<p>How would you rate your experience?</p>
@@ -72,67 +72,68 @@
 					<button class="ui-star-submit">Submit</button>
 				</form>
 				<p><em>Application developed by George Paton, a student at Deakin, as part of SIT313.</em></p>
-			</div>
-			<div data-role="footer">
+			</main>
+			<footer data-role="footer">
 				<h2>Copyright 2015 George Paton</h2>
-			</div>
+			</footer>
 		</section>
         
         
         
         <!-- Explore cakes page -->
         <section id="explore-cakes" data-role="page">
-			<div data-role="header" data-position="fixed">
+			<header data-role="header" data-position="fixed">
                 <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
 				<h1>Explore Cakes</h1>
-			</div>
-			<div data-role="content" class="ui-content ui-max-width">
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
                 
-			</div>
-            <div data-role="footer" data-position="fixed">
+			</main>
+            <footer data-role="footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#explore-cakes" class="ui-btn-active ui-state-persist" data-transition="none">Explore</a></li>
-						<li><a href="#search-cakes" data-transition="none">Search</a></li>
+						<li><a href="#explore-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="navigation">Explore</a></li>
+						<li><a href="#search-cakes" data-transition="none" data-icon="search">Search</a></li>
 					</ul>
 				</div>
-			</div>
+			</footer>
 		</section>
         
         <!-- Search cakes page -->
         <section id="search-cakes" data-role="page">
-			<div data-role="header" data-position="fixed">
+			<header data-role="header" data-position="fixed">
                 <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
 				<h1>Search Cakes</h1>
-			</div>
-			<div data-role="content" class="ui-content ui-max-width">
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
                 <form class="affix-header">
                     <input type="search" name="cake-search" id="cake-search" value="">
                 </form>
-			</div>
-            <div data-role="footer" data-position="fixed">
+			</main>
+            <footer data-role="footer" data-position="fixed">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#explore-cakes" data-transition="none">Explore</a></li>
-						<li><a href="#search-cakes" class="ui-btn-active ui-state-persist" data-transition="none">Search</a></li>
+						<li><a href="#explore-cakes" data-transition="none" data-icon="navigation">Explore</a></li>
+						<li><a href="#search-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="search">Search</a></li>
 					</ul>
 				</div>
-			</div>
+			</footer>
 		</section>
         
         
         
         <!-- Stores page -->
         <section id="stores" data-role="page">
-			<div data-role="header" data-position="fixed">
+			<header data-role="header" data-position="fixed">
                 <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
 				<h1>Stores</h1>
-			</div>
-			<div data-role="content" class="ui-content ui-max-width">
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
                 <form class="affix-header">
                     <input type="search" name="cake-search" id="cake-search" value="">
                 </form>
-			</div>
+                <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Deakin%20University%2C%20Burwood%2C%20Victoria%2C%20Australia&key=AIzaSyCkTZcoLp4L9WRrFaYAXNI2WEVLz9oar3o"></iframe>
+			</main>
 		</section>
 	</body>
 </html>
