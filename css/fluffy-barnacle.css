@@ -63,6 +63,9 @@ body {
 .ui-btn-img img {
 	max-width: 100%;
 	position: relative;
+    
+    /* Fix misalignment */
+    margin-bottom: -5px;
 }
 .ui-btn-img span {
 	position: absolute;
@@ -84,6 +87,11 @@ body {
 .ui-img-blur:hover img {
 	-webkit-filter: blur(0);
 	filter: blur(0);
+}
+
+/* inline images */
+.img-inline-20 {
+    height: 20px;
 }
 
 /* Desktop class devices */
