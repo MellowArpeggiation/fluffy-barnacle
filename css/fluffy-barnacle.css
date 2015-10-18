@@ -78,8 +78,8 @@ body {
 	line-height: 1;
     
     /* Cool stuff for Safari browsers */
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
 /* Fade images in */

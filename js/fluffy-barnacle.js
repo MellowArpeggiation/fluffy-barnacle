@@ -48,6 +48,12 @@ function clearIntervals() {
 	intervals = [];
 }
 
+function clearStars() {
+    'use strict';
+    $(".ui-star-rating .fa-star-o").each(function () {
+        $(this).removeClass("active");
+    });
+}
 
 function scrollImage(timestamp) {
 	'use strict';
