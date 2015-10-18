@@ -19,43 +19,50 @@
 		<script src="js/fluffy-barnacle.js"></script>
 	</head>
 	<body>
+        <!-- Index page -->
 		<section data-role="page" id="index">
 			<main data-role="content" class="ui-content ui-max-width">
 				<img class="header-img" src="img/logo-web.svg">
-				<p class="header-caption">Let them eat cake</p>
+				<p class="header-caption" id="subtitle"></p>
+                <script>
+                    setSubtitle($("#subtitle"), 4000);
+                </script>
 				<a href="#" class="ui-btn ui-btn-img" data-transition="slide">
 					<img src="//placehold.it/1192x598">
-					<span>Get me a ruddy cake</span>
+					<span>Browse Cakes</span>
+                    <!-- Collate all the available cakes in the database -->
 				</a>
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
 						<a href="#" class="ui-btn ui-btn-img" data-transition="slide">
 							<img src="//placehold.it/586x586">
-							<span>Find a store</span>
+							<span>Browse Stores</span>
+                            <!-- Collate all the available stores -->
 						</a>
 					</div>
 					<div class="ui-block-b">
-						<a href="#" class="ui-btn ui-btn-img" data-transition="slide">
+						<a href="#about" class="ui-btn ui-btn-img" data-rel="dialog" data-transition="slidedown">
 							<img src="//placehold.it/586x586">
-							<span>Browse stores</span>
-						</a>
-					</div>
-				</div>
-				<div class="ui-grid-a">
-					<div class="ui-block-a">
-						<a href="#" class="ui-btn ui-btn-img" data-transition="slide">
-							<img src="//placehold.it/586x586" alt="Menu">
-							<span>cakes cakes</span>
-						</a>
-					</div>
-					<div class="ui-block-b">
-						<a href="#" class="ui-btn ui-btn-img" data-transition="slide">
-							<img src="//placehold.it/586x586" alt="Menu">
 							<span>About FluBa</span>
+                            <!-- About this application -->
 						</a>
 					</div>
 				</div>
 			</main>
+		</section>
+        
+        <!-- About page -->
+        <section id="about" data-role="page">
+			<div data-role="header">
+				<h1>About</h1>
+			</div>
+			<div data-role="content">
+				<p>FluBa, founded in 2015, will deliver you cakes</p>
+				<p><em>Application developed by George Paton, a student at Deakin, as part of SIT313.</em></p>
+			</div>
+			<div data-role="footer">
+				<h2>Copyright 2015 George Paton</h2>
+			</div>
 		</section>
 	</body>
 </html>
