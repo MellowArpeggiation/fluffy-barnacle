@@ -158,16 +158,27 @@ function setCakeDetail(name) {
     header.html(name);
     content.empty();
     
+    
     content.append($("<img>", {
         "class": "header-img header-img-attach",
         "src": "img/cakes/" + img
     }));
+    
+    content.append($("<button>", {
+        
+    }).html("Favourite"));
+    
     content.append(desc);
     content.append("<h4>Available at:</h4>");
     
     storeList = $("<ul>");
     cake.find("store").each(function () {
-        var item = $("<li>").html($(this).attr("name"));
+        var item = $("<li>"),
+            storeName = $(this).attr("name");
+        item.append($("<a>", {
+            "href": "#store-detail",
+            "onclick": "setStoreDetail(\"" + storeName + "\")"
+        }).html(storeName));
         
         storeList.append(item);
     });
@@ -190,6 +201,9 @@ function setStoreDetail(name) {
             img = store.find("img").attr("src");
         }
     });
+    
+    header.html(name);
+    content.empty();
 }
 
 $(document).ready(function () {
