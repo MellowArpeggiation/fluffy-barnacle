@@ -124,6 +124,11 @@ body {
 		margin-right: auto !important;
 		position: relative !important;
 	}
+    
+	.header-img-attach {
+		margin: 0;
+		width: 100%;
+	}
 }
 
 /* Fix jQuery mobile navbar bug */
