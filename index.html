@@ -21,6 +21,12 @@
         <!-- Custom jQuery Mobile theme -->
         <link rel="stylesheet" href="css/themes/cake.min.css" />
         <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        
+        <script type="text/javascript">
+			//Initialise The Map API Key
+      		src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCgCDezeZYV0745WxMNMF-QE7c2ybDECwU";
+    	</script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	</head>
 	<body>
         <!-- Index page -->
@@ -144,11 +150,10 @@
         <!-- Cake detail page -->
         <section id="cake-detail" data-role="page">
 			<header data-role="header" data-position="fixed" data-add-back-btn="true">
-				<!-- Dynamic content -->
-                <h1></h1>
+                <h1><!-- Dynamic content --></h1>
 			</header>
 			<main data-role="content" class="ui-content ui-max-width">
-                <!-- Dynamic content -->
+                <span class="content"><!-- Dynamic content --></span>
 			</main>
 		</section>
         
@@ -171,11 +176,11 @@
         <!-- Store detail page -->
         <section id="store-detail" data-role="page">
 			<header data-role="header" data-position="fixed" data-add-back-btn="true">
-				<!-- Dynamic content -->
-                <h1></h1>
+				<h1><!-- Dynamic content --></h1>
 			</header>
 			<main data-role="content" class="ui-content ui-max-width">
-                <!-- Dynamic content -->
+                <span class="content"><!-- Dynamic content --></span>
+                <div id="map"></div>
 			</main>
 		</section>
 	</body>

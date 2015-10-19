@@ -1,9 +1,9 @@
 <cakes>
     <cake name="Custom Cake">
         <img src="character-cake.jpg" />
-        <desc>
+        <description>
             <p>Want your own customised cake?</p>
-        </desc>
+        </description>
         <stores>
             <store name="A Treat of France" />
             <store name="Alice Nivens" />
@@ -12,9 +12,9 @@
     
     <cake name="Strawberry Cake">
         <img src="strawberry-cake.jpg" />
-        <desc>
+        <description>
             <p>A delicious strawberry flavoured cake, some come covered in extra strawberries! Yum!</p>
-        </desc>
+        </description>
         <stores>
             <store name="Alice Nivens" />
         </stores>
@@ -22,12 +22,41 @@
     
     <cake name="French Vanilla">
         <img src="french-vanilla.jpg" />
-        <desc>
-            <p>A simple vanilla cake, can be covered with various toppings and icings for great variety</p>
-        </desc>
+        <description>
+            <p>A simple vanilla cake, can be covered with various toppings and icings for great variety.</p>
+        </description>
         <stores>
             <store name="2Pocket Fairtrade" />
+            <store name="A Treat of France" />
+            <store name="Alice Nivens" />
             <store name="Blue Buddha" />
         </stores>
+    </cake>
+    
+    <cake name="M&amp;M Cake">
+        <img src="mm-cake.jpg" />
+        <description>
+            <p>A cake made out of M&amp;M's, this is a <em>rare</em> and special cake.</p>
+        </description>
+        <stores>
+            <store name="Blue Buddha" />
+        </stores>
+    </cake>
+    
+    <cake name="Oreo Cake">
+        <img src="oreo-cake.jpg" />
+        <description>
+            <p>A cake made out of Oreo's, this is a <em>much rarer</em> cake than that silly old M&amp;M one.</p>
+        </description>
+        <stores>
+            <store name="Blue Buddha" />
+        </stores>
+    </cake>
+    
+    <cake name="Rainbow Cake">
+        <img src="rainbow-cake.jpg" />
+        <description>
+            <p>A bright cake, mainly made of vanilla and coloured icing</p>
+        </description>
     </cake>
 </cakes>

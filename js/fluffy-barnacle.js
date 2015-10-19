@@ -1,7 +1,8 @@
-/*jslint browser: true, devel: true*/
+/*jslint browser: true, devel: true, eqeq: true*/
 
-/*global $, requestAnimationFrame, cancelAnimationFrame,
-clearIntervals, setSubtitle, loadCakes, filterCakes, filterStores*/
+/*global $, google, requestAnimationFrame, cancelAnimationFrame,
+clearIntervals, setSubtitle, loadCakes, filterFavourites, filterStores,
+addFavourite, removeFavourite, getFavourites, setFavourites, checkFavourite*/
 
 var scrollAnimation,
 	scrollElement;
@@ -26,6 +27,7 @@ $.get("cakes.xml", function (d) {
     'use strict';
     cakesXML = $(d);
     loadCakes($("#explore-cakes main"));
+    filterFavourites($("#favourite-cakes main"));
 });
 $.get("stores.xml", function (d) {
     'use strict';
@@ -42,6 +44,7 @@ function init() {
     
     $(".ui-star-submit").hide();
 	
+    $(".ui-star-rating .fa-star-o").unbind("click");
 	$(".ui-star-rating .fa-star-o").on("click", function () {
 		$(this).parent().children().each(function () {
 			$(this).removeClass("active");
@@ -50,6 +53,29 @@ function init() {
         
         $(".ui-star-submit").show(400);
 	});
+    
+    $(".ui-fav").unbind("click");
+    $(".ui-fav").on("click", function () {
+		if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            removeFavourite($(this).attr("data-name"));
+        } else {
+            $(this).addClass("active");
+            addFavourite($(this).attr("data-name"));
+        }
+        filterFavourites($("#favourite-cakes main"));
+	});
+    
+    if (localStorage.getItem("fav") == undefined) {
+        // Create an empty array as string
+        localStorage.setItem("fav", JSON.stringify([]));
+    }
+    
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        scrollwheel: false,
+        zoom: 8
+    });
 }
 
 function clearIntervals() {
@@ -128,9 +154,30 @@ function loadCakes(pageContent) {
     });
 }
 
-function filterCakes(pageContent) {
+function filterFavourites(pageContent) {
     'use strict';
+    var favourites = getFavourites();
+    
     pageContent.empty();
+    
+    cakesXML.find("cake").each(function () {
+        var name = $(this).attr("name"),
+            imgSrc = $(this).find("img").attr("src"),
+            button;
+        
+        if (favourites.indexOf(name) !== -1) {
+            button = $("<a>", {
+                "class": "ui-btn ui-btn-img",
+                "href": "#cake-detail",
+                "onclick": "setCakeDetail(\"" + name + "\")"
+            });
+            button.append($("<img>", {
+                "src": "img/cakes/" + imgSrc
+            }));
+            button.append($("<span>").append(name));
+            pageContent.append(button);
+        }
+    });
 }
 
 function filterStores(pageContent) {
@@ -141,16 +188,17 @@ function filterStores(pageContent) {
 function setCakeDetail(name) {
     'use strict';
     var header = $("#cake-detail header h1"),
-        content = $("#cake-detail main"),
+        content = $("#cake-detail main .content"),
         cake,
         img,
         desc,
-        storeList;
+        storeList,
+        favHeart;
     
     cakesXML.find("cake").each(function () {
         if ($(this).attr("name") === name) {
             cake = $(this);
-            desc = cake.find("desc").html();
+            desc = cake.find("description").html();
             img = cake.find("img").attr("src");
         }
     });
@@ -164,31 +212,42 @@ function setCakeDetail(name) {
         "src": "img/cakes/" + img
     }));
     
-    content.append($("<button>", {
-        
-    }).html("Favourite"));
+    favHeart = $("<i>", {
+        "class": "fa fa-heart-o ui-fav",
+        "data-name": name
+    });
+    if (checkFavourite(name)) {
+        favHeart.addClass("active");
+    }
+    content.append(favHeart);
     
     content.append(desc);
     content.append("<h4>Available at:</h4>");
     
+    console.log(cake.find("store"));
+    
     storeList = $("<ul>");
-    cake.find("store").each(function () {
-        var item = $("<li>"),
-            storeName = $(this).attr("name");
-        item.append($("<a>", {
-            "href": "#store-detail",
-            "onclick": "setStoreDetail(\"" + storeName + "\")"
-        }).html(storeName));
-        
-        storeList.append(item);
-    });
+    if (cake.find("store").length === 0) {
+        storeList.append($("<li>").html("This cake is unavailable in stores."));
+    } else {
+        cake.find("store").each(function () {
+            var item = $("<li>"),
+                storeName = $(this).attr("name");
+            item.append($("<a>", {
+                "href": "#store-detail",
+                "onclick": "setStoreDetail(\"" + storeName + "\")"
+            }).html(storeName));
+
+            storeList.append(item);
+        });
+    }
     content.append(storeList);
 }
 
 function setStoreDetail(name) {
     'use strict';
     var header = $("#store-detail header h1"),
-        content = $("#store-detail main"),
+        content = $("#store-detail main .content"),
         store,
         img,
         desc,
@@ -197,13 +256,63 @@ function setStoreDetail(name) {
     storesXML.find("store").each(function () {
         if ($(this).attr("name") === name) {
             store = $(this);
-            desc = store.find("desc").html();
+            desc = store.find("description").html();
             img = store.find("img").attr("src");
         }
     });
     
     header.html(name);
     content.empty();
+    
+    content.append($("<img>", {
+        "class": "header-img header-img-attach",
+        "src": "img/stores/" + img
+    }));
+    
+    content.append(desc);
+}
+
+function addFavourite(name) {
+    'use strict';
+    var favourites = getFavourites();
+    
+    favourites.push(name);
+    
+    setFavourites(favourites);
+}
+
+function removeFavourite(name) {
+    'use strict';
+    var favourites = getFavourites(),
+        i;
+    
+    for (i = favourites.length - 1; i >= 0; i -= 1) {
+        if (favourites[i] === name) {
+            favourites.splice(i, 1);
+        }
+    }
+    
+    setFavourites(favourites);
+}
+
+function checkFavourite(name) {
+    'use strict';
+    var favourites = getFavourites();
+    
+    if (favourites.indexOf(name) !== -1) {
+        return true;
+    }
+    return false;
+}
+
+function getFavourites() {
+    'use strict';
+    return JSON.parse(localStorage.getItem("fav"));
+}
+
+function setFavourites(array) {
+    'use strict';
+    localStorage.setItem("fav", JSON.stringify(array));
 }
 
 $(document).ready(function () {

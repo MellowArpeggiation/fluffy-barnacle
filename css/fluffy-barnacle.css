@@ -116,6 +116,26 @@ body {
 	content: "\f005"
 }
 
+.ui-fav {
+    font-size: 2em;
+    float: right;
+    margin-top: 8px;
+    color: #D95E40;
+    cursor: pointer;
+}
+
+.ui-fav:hover {
+    color: #E08E79;
+}
+
+.ui-fav:hover:before, .ui-fav.active:before {
+    content: "\f004";
+}
+
+#map {
+    height: 300px;
+}
+
 /* Desktop class devices */
 @media only screen and (min-width: 600px) {
 	.ui-max-width {
