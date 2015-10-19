@@ -194,10 +194,13 @@ function loadStores() {
                     sTitle = $(this).attr("name"),
                     sLoc = $(this).find("location").attr("name"),
                     marker,
-                    infoWindow;
+                    infoWindow,
+                    link = "\"" + sTitle + "\"";
+                
+                console.log(link);
                 
                 infoWindow = new google.maps.InfoWindow({
-                    content: "<h3>" + sTitle + "</h3>" +
+                    content: "<h3><a href=#store-detail onclick='setStoreDetail(" + link + ")'>" + sTitle + "</a></h3>" +
                         "<p>" + sLoc + "</p>"
                 });
                 
