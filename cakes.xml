@@ -2,7 +2,7 @@
     <cake name="Custom Cake">
         <img src="character-cake.jpg" />
         <desc>
-            Want your own customised cake?
+            <p>Want your own customised cake?</p>
         </desc>
         <stores>
             <store name="A Treat of France" />
@@ -13,7 +13,7 @@
     <cake name="Strawberry Cake">
         <img src="strawberry-cake.jpg" />
         <desc>
-            A delicious strawberry flavoured cake, some come covered in extra strawberries! Yum!
+            <p>A delicious strawberry flavoured cake, some come covered in extra strawberries! Yum!</p>
         </desc>
         <stores>
             <store name="Alice Nivens" />
@@ -23,7 +23,7 @@
     <cake name="French Vanilla">
         <img src="french-vanilla.jpg" />
         <desc>
-            A simple vanilla cake, can be covered with various toppings and icings for great variety
+            <p>A simple vanilla cake, can be covered with various toppings and icings for great variety</p>
         </desc>
         <stores>
             <store name="2Pocket Fairtrade" />

@@ -52,13 +52,6 @@ function init() {
 	});
 }
 
-function setPage(event, object) {
-    'use strict';
-    var currentPage = object.absUrl.split("#")[1].split("?")[0];
-    
-    console.log(currentPage);
-}
-
 function clearIntervals() {
 	'use strict';
 	// Remove all intervals on page change, prevent buildup of empty fired functions
@@ -125,8 +118,7 @@ function loadCakes(pageContent) {
         button = $("<a>", {
             "class": "ui-btn ui-btn-img",
             "href": "#cake-detail",
-            "onclick": "setCakeDetail(\"" + name + "\")",
-            "data-transition": "slide"
+            "onclick": "setCakeDetail(\"" + name + "\")"
         });
         button.append($("<img>", {
             "src": "img/cakes/" + imgSrc
@@ -148,7 +140,56 @@ function filterStores(pageContent) {
 
 function setCakeDetail(name) {
     'use strict';
-    $("#cake-detail header h1").html(name);
+    var header = $("#cake-detail header h1"),
+        content = $("#cake-detail main"),
+        cake,
+        img,
+        desc,
+        storeList;
+    
+    cakesXML.find("cake").each(function () {
+        if ($(this).attr("name") === name) {
+            cake = $(this);
+            desc = cake.find("desc").html();
+            img = cake.find("img").attr("src");
+        }
+    });
+    
+    header.html(name);
+    content.empty();
+    
+    content.append($("<img>", {
+        "class": "header-img header-img-attach",
+        "src": "img/cakes/" + img
+    }));
+    content.append(desc);
+    content.append("<h4>Available at:</h4>");
+    
+    storeList = $("<ul>");
+    cake.find("store").each(function () {
+        var item = $("<li>").html($(this).attr("name"));
+        
+        storeList.append(item);
+    });
+    content.append(storeList);
+}
+
+function setStoreDetail(name) {
+    'use strict';
+    var header = $("#store-detail header h1"),
+        content = $("#store-detail main"),
+        store,
+        img,
+        desc,
+        storeList;
+    
+    storesXML.find("store").each(function () {
+        if ($(this).attr("name") === name) {
+            store = $(this);
+            desc = store.find("desc").html();
+            img = store.find("img").attr("src");
+        }
+    });
 }
 
 $(document).ready(function () {
@@ -156,7 +197,6 @@ $(document).ready(function () {
 	
 	init();
 	$("body").on("pagecontainerchange", init);
-    $("body").on("pagecontainerbeforechange", setPage);
 });
 
 /*$(document).on("scrollstart", function (event) {
