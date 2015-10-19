@@ -132,7 +132,7 @@ body {
     content: "\f004";
 }
 
-#map {
+.map {
     height: 300px;
 }
 

@@ -98,29 +98,6 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="#explore-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="navigation">Explore</a></li>
-						<li><a href="#search-cakes" data-transition="none" data-icon="search">Search</a></li>
-                        <li><a href="#favourite-cakes" data-transition="none" data-icon="heart">Favourites</a></li>
-					</ul>
-				</div>
-			</footer>
-		</section>
-        
-        <!-- Search cakes page -->
-        <section id="search-cakes" data-role="page">
-			<header data-role="header" data-position="fixed">
-                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
-				<h1>Search Cakes</h1>
-			</header>
-			<main data-role="content" class="ui-content ui-max-width">
-                <form class="affix-header">
-                    <input type="search" name="cake-search" id="cake-search" value="">
-                </form>
-			</main>
-            <footer data-role="footer" data-position="fixed">
-				<div data-role="navbar">
-					<ul>
-						<li><a href="#explore-cakes" data-transition="none" data-icon="navigation">Explore</a></li>
-						<li><a href="#search-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="search">Search</a></li>
                         <li><a href="#favourite-cakes" data-transition="none" data-icon="heart">Favourites</a></li>
 					</ul>
 				</div>
@@ -140,7 +117,6 @@
 				<div data-role="navbar">
 					<ul>
 						<li><a href="#explore-cakes" data-transition="none" data-icon="navigation">Explore</a></li>
-						<li><a href="#search-cakes" data-transition="none" data-icon="search">Search</a></li>
                         <li><a href="#favourite-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="heart">Favourites</a></li>
 					</ul>
 				</div>
@@ -169,7 +145,7 @@
                 <form class="affix-header">
                     <input type="search" name="cake-search" id="cake-search" value="">
                 </form>
-                <iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Deakin%20University%2C%20Burwood%2C%20Victoria%2C%20Australia&key=AIzaSyCkTZcoLp4L9WRrFaYAXNI2WEVLz9oar3o"></iframe>
+                <div id="map-stores" class="map"></div>
 			</main>
 		</section>
         
@@ -180,7 +156,6 @@
 			</header>
 			<main data-role="content" class="ui-content ui-max-width">
                 <span class="content"><!-- Dynamic content --></span>
-                <div id="map"></div>
 			</main>
 		</section>
 	</body>

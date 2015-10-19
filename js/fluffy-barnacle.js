@@ -1,11 +1,8 @@
 /*jslint browser: true, devel: true, eqeq: true*/
 
 /*global $, google, requestAnimationFrame, cancelAnimationFrame,
-clearIntervals, setSubtitle, loadCakes, filterFavourites, filterStores,
+clearIntervals, setSubtitle, loadCakes, filterFavourites, loadStores,
 addFavourite, removeFavourite, getFavourites, setFavourites, checkFavourite*/
-
-var scrollAnimation,
-	scrollElement;
 
 var subtitles = [
     "Let them eat cake",
@@ -21,6 +18,9 @@ var intervals = [];
 
 var cakesXML,
     storesXML;
+
+var mapStores,
+    storesLoaded = false;
 
 // retrieve the XML files
 $.get("cakes.xml", function (d) {
@@ -65,17 +65,30 @@ function init() {
         }
         filterFavourites($("#favourite-cakes main"));
 	});
+}
+
+function initPage(event, object) {
+    'use strict';
+    init();
+    
+    if (object.options.absUrl.split("#")[1] === "stores") {
+        loadStores();
+    }
+}
+
+function initOnce() {
+    'use strict';
     
     if (localStorage.getItem("fav") == undefined) {
         // Create an empty array as string
         localStorage.setItem("fav", JSON.stringify([]));
     }
     
-    var map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        scrollwheel: false,
-        zoom: 8
-    });
+    
+    if (cakesXML != undefined) {
+        loadCakes($("#explore-cakes main"));
+        filterFavourites($("#favourite-cakes main"));
+    }
 }
 
 function clearIntervals() {
@@ -95,21 +108,6 @@ function clearStars() {
     $(".ui-star-rating .fa-star-o").each(function () {
         $(this).removeClass("active");
     });
-}
-
-function scrollImage(timestamp) {
-	'use strict';
-	scrollAnimation = requestAnimationFrame(scrollImage);
-	
-	console.log(timestamp);
-	
-	if ($(window).scrollTop() > 10) {
-		scrollElement.removeClass("top");
-		scrollElement.addClass("affix");
-	} else {
-		scrollElement.removeClass("affix");
-		scrollElement.addClass("top");
-	}
 }
 
 function getRandomSubtitle(current) {
@@ -180,9 +178,44 @@ function filterFavourites(pageContent) {
     });
 }
 
-function filterStores(pageContent) {
+function loadStores() {
     'use strict';
-	pageContent.empty();
+    
+    if (!storesLoaded) {
+        try {
+            mapStores = new google.maps.Map(document.getElementById("map-stores"), {
+                center: {lat: -37.8109164, lng: 144.9615567},
+                zoom: 13
+            });
+            
+            storesXML.find("store").each(function () {
+                var sLat = parseFloat($(this).find("lat").html()),
+                    sLng = parseFloat($(this).find("lng").html()),
+                    sTitle = $(this).attr("name"),
+                    sLoc = $(this).find("location").attr("name"),
+                    marker,
+                    infoWindow;
+                
+                infoWindow = new google.maps.InfoWindow({
+                    content: "<h3>" + sTitle + "</h3>" +
+                        "<p>" + sLoc + "</p>"
+                });
+                
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(sLat, sLng),
+                    map: mapStores,
+                    title: sTitle
+                });
+                
+                marker.addListener('click', function () {
+                    infoWindow.open(mapStores, marker);
+                });
+            });
+            storesLoaded = true;
+        } catch (error) {
+            storesLoaded = false;
+        }
+    }
 }
 
 function setCakeDetail(name) {
@@ -251,7 +284,7 @@ function setStoreDetail(name) {
         store,
         img,
         desc,
-        storeList;
+        contactList;
     
     storesXML.find("store").each(function () {
         if ($(this).attr("name") === name) {
@@ -270,6 +303,27 @@ function setStoreDetail(name) {
     }));
     
     content.append(desc);
+    
+    content.append("<h4>Store Location</h4>");
+    content.append($("<p>").html(store.find("location").attr("name")));
+    
+    content.append("<h4>Contact Details:</h4>");
+    
+    contactList = $("<ul>");
+    if (store.find("contact").length === 0) {
+        contactList.append($("<li>").html("No contact information available"));
+    } else {
+        store.find("contact").children().each(function () {
+            var item = $("<li>"),
+                itemText;
+            itemText = $(this).prop("tagName") + ": ";
+            itemText += $(this).html();
+            
+            item.html(itemText);
+            contactList.append(item);
+        });
+    }
+    content.append(contactList);
 }
 
 function addFavourite(name) {
@@ -319,18 +373,6 @@ $(document).ready(function () {
 	'use strict';
 	
 	init();
-	$("body").on("pagecontainerchange", init);
+    initOnce();
+	$("body").on("pagecontainerchange", initPage);
 });
-
-/*$(document).on("scrollstart", function (event) {
-	'use strict';
-	scrollElement = $(".scroll-element");
-	console.log(event);
-	scrollAnimation = requestAnimationFrame(scrollImage);
-});
-
-$(document).on("scrollstop", function (event) {
-	'use strict';
-	console.log(event);
-	cancelAnimationFrame(scrollAnimation);
-});*/
