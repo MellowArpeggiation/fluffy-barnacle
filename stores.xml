@@ -1,0 +1,49 @@
+<stores>
+    <store name="2Pocket Fairtrade">
+        <img src="2pocket.jpg" />
+        <description>
+            An ethically minded espresso bar and store, 2Pocket Fairtrade supports disadvantaged producers to improve their lives through business and commerce.
+        </description>
+        <location>
+            <name>Ground 277 Little Lonsdale Street, Melbourne</name>
+            <lat></lat>
+            <lng></lng>
+        </location>
+    </store>
+    
+    <store name="A Treat of France">
+        <img src="treatoffrance.jpg" />
+        <description>
+            A Treat of France serve traditional French croissants, sourdough breads, danishes and cakes.
+        </description>
+        <location>
+            <name>269 City Road, Southbank</name>
+            <lat></lat>
+            <lng></lng>
+        </location>
+    </store>
+    
+    <store name="Alice Nivens">
+        <img src="alicenivens.jpg" />
+        <description>
+            Enter Alice's wonderland to enjoy tasty treats and baked delights created daily. Selections include cakes, muffins, croissants and sandwiches.
+        </description>
+        <location>
+            <name>Shop 13 Port Phillip Arcade, Melbourne</name>
+            <lat></lat>
+            <lng></lng>
+        </location>
+    </store>
+    
+    <store name="Blue Buddha">
+        <img src="bluebuddha.jpg" />
+        <description>
+            Blue Buddha cafe supports Fair trade, organic and local produce, while creating a beautiful atmosphere for people to come in and share their stories.
+        </description>
+        <location>
+            <name>Unit 30, Ground, 1 O'connell Street, North Melbourne</name>
+            <lat></lat>
+            <lng></lng>
+        </location>
+    </store>
+</stores>

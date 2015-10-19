@@ -1,0 +1,33 @@
+<cakes>
+    <cake name="Custom Cake">
+        <img src="character-cake.jpg" />
+        <desc>
+            Want your own customised cake?
+        </desc>
+        <stores>
+            <store name="A Treat of France" />
+            <store name="Alice Nivens" />
+        </stores>
+    </cake>
+    
+    <cake name="Strawberry Cake">
+        <img src="strawberry-cake.jpg" />
+        <desc>
+            A delicious strawberry flavoured cake, some come covered in extra strawberries! Yum!
+        </desc>
+        <stores>
+            <store name="Alice Nivens" />
+        </stores>
+    </cake>
+    
+    <cake name="French Vanilla">
+        <img src="french-vanilla.jpg" />
+        <desc>
+            A simple vanilla cake, can be covered with various toppings and icings for great variety
+        </desc>
+        <stores>
+            <store name="2Pocket Fairtrade" />
+            <store name="Blue Buddha" />
+        </stores>
+    </cake>
+</cakes>

@@ -1,7 +1,7 @@
 /*jslint browser: true, devel: true*/
 
 /*global $, requestAnimationFrame, cancelAnimationFrame,
-clearIntervals, setSubtitle*/
+clearIntervals, setSubtitle, loadCakes, filterCakes, filterStores*/
 
 var scrollAnimation,
 	scrollElement;
@@ -17,6 +17,20 @@ var subtitles = [
 ];
 
 var intervals = [];
+
+var cakesXML,
+    storesXML;
+
+// retrieve the XML files
+$.get("cakes.xml", function (d) {
+    'use strict';
+    cakesXML = $(d);
+    loadCakes($("#explore-cakes main"));
+});
+$.get("stores.xml", function (d) {
+    'use strict';
+    storesXML = $(d);
+});
 
 function init() {
 	'use strict';
@@ -36,6 +50,13 @@ function init() {
         
         $(".ui-star-submit").show(400);
 	});
+}
+
+function setPage(event, object) {
+    'use strict';
+    var currentPage = object.absUrl.split("#")[1].split("?")[0];
+    
+    console.log(currentPage);
 }
 
 function clearIntervals() {
@@ -92,11 +113,50 @@ function setSubtitle(element, interval) {
     }, interval));
 }
 
+function loadCakes(pageContent) {
+    'use strict';
+    pageContent.empty();
+    
+    cakesXML.find("cake").each(function () {
+        var name = $(this).attr("name"),
+            imgSrc = $(this).find("img").attr("src"),
+            button;
+        
+        button = $("<a>", {
+            "class": "ui-btn ui-btn-img",
+            "href": "#cake-detail",
+            "onclick": "setCakeDetail(\"" + name + "\")",
+            "data-transition": "slide"
+        });
+        button.append($("<img>", {
+            "src": "img/cakes/" + imgSrc
+        }));
+        button.append($("<span>").append(name));
+        pageContent.append(button);
+    });
+}
+
+function filterCakes(pageContent) {
+    'use strict';
+    pageContent.empty();
+}
+
+function filterStores(pageContent) {
+    'use strict';
+	pageContent.empty();
+}
+
+function setCakeDetail(name) {
+    'use strict';
+    $("#cake-detail header h1").html(name);
+}
+
 $(document).ready(function () {
 	'use strict';
 	
 	init();
 	$("body").on("pagecontainerchange", init);
+    $("body").on("pagecontainerbeforechange", setPage);
 });
 
 /*$(document).on("scrollstart", function (event) {
