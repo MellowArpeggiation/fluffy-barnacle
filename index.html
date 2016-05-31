@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>FluBa</title>
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="I hope you flubbing love cake" />
+		
+		<!-- jQuery and jQuery mobile -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+		
+		<!-- Custom CSS and JS -->
+		<link rel="stylesheet" href="css/fluffy-barnacle.css" />
+		<script src="js/fluffy-barnacle.js"></script>
+        
+        <!-- Custom jQuery Mobile theme -->
+        <link rel="stylesheet" href="css/themes/cake.min.css" />
+        <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+        
+        <script type="text/javascript">
+			//Initialise The Map API Key
+      		src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCgCDezeZYV0745WxMNMF-QE7c2ybDECwU";
+    	</script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+	</head>
+	<body>
+        <!-- Index page -->
+		<section data-role="page" id="index">
+			<main data-role="content" class="ui-content ui-max-width">
+				<img class="header-img" src="img/logo-web.svg">
+				<p class="header-caption random-subtitle"></p>
+				<a href="#explore-cakes" class="ui-btn ui-btn-img">
+					<img src="img/cakes.jpg">
+					<span>Browse Cakes</span>
+                    <!-- Collate all the available cakes in the database -->
+				</a>
+				<div class="ui-grid-a">
+					<div class="ui-block-a">
+						<a href="#stores" class="ui-btn ui-btn-img">
+							<img src="img/stores.jpg">
+							<span>Browse Stores</span>
+                            <!-- Collate all the available stores -->
+						</a>
+					</div>
+					<div class="ui-block-b">
+						<a href="#about" class="ui-btn ui-btn-img" data-rel="dialog" data-transition="slidedown">
+							<img src="img/about.jpg">
+							<span>About FluBa</span>
+                            <!-- About this application -->
+						</a>
+					</div>
+				</div>
+			</main>
+		</section>
+        
+        <!-- About page -->
+        <section id="about" data-role="page">
+			<header data-role="header">
+				<h1>About</h1>
+			</header>
+			<main data-role="content">
+				<p><img src="img/logo-web.svg" class="img-inline-20">, founded in 2015, will deliver you cakes</p>
+                <form onsubmit="clearStars()">
+					<p>How would you rate your experience?</p>
+					<div class="ui-star-rating">
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+						<i class="fa fa-star-o"></i>
+					</div>
+					<button class="ui-star-submit">Submit</button>
+				</form>
+				<p><em>Application developed by George Paton, a student at Deakin, as part of SIT313.</em></p>
+			</main>
+			<footer data-role="footer">
+				<h2>Copyright 2015 George Paton</h2>
+			</footer>
+		</section>
+        
+        
+        
+        <!-- Explore cakes page -->
+        <section id="explore-cakes" data-role="page">
+			<header data-role="header" data-position="fixed">
+                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
+				<h1>Explore Cakes</h1>
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
+                
+			</main>
+            <footer data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#explore-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="navigation">Explore</a></li>
+                        <li><a href="#favourite-cakes" data-transition="none" data-icon="heart">Favourites</a></li>
+					</ul>
+				</div>
+			</footer>
+		</section>
+        
+        <!-- Favourite cakes page -->
+        <section id="favourite-cakes" data-role="page">
+			<header data-role="header" data-position="fixed">
+                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
+				<h1>Favourite Cakes</h1>
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
+                
+			</main>
+            <footer data-role="footer" data-position="fixed">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#explore-cakes" data-transition="none" data-icon="navigation">Explore</a></li>
+                        <li><a href="#favourite-cakes" class="ui-btn-active ui-state-persist" data-transition="none" data-icon="heart">Favourites</a></li>
+					</ul>
+				</div>
+			</footer>
+		</section>
+        
+        <!-- Cake detail page -->
+        <section id="cake-detail" data-role="page">
+			<header data-role="header" data-position="fixed" data-add-back-btn="true">
+                <h1><!-- Dynamic content --></h1>
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
+                <span class="content"><!-- Dynamic content --></span>
+			</main>
+		</section>
+        
+        
+        
+        <!-- Stores page -->
+        <section id="stores" data-role="page">
+			<header data-role="header" data-position="fixed">
+                <a href="#index" data-icon="home" data-iconpos="notext" class="ui-btn-left">Home</a>
+				<h1>Stores</h1>
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
+                <form class="affix-header">
+                    <input type="search" name="cake-search" id="cake-search" value="">
+                </form>
+                <div id="map-stores" class="map"></div>
+			</main>
+		</section>
+        
+        <!-- Store detail page -->
+        <section id="store-detail" data-role="page">
+			<header data-role="header" data-position="fixed" data-add-back-btn="true">
+				<h1><!-- Dynamic content --></h1>
+			</header>
+			<main data-role="content" class="ui-content ui-max-width">
+                <span class="content"><!-- Dynamic content --></span>
+			</main>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,60 @@
+<stores>
+    <store name="2Pocket Fairtrade">
+        <img src="2pocket.jpg" />
+        <description>
+            <p>An ethically minded espresso bar and store, 2Pocket Fairtrade supports disadvantaged producers to improve their lives through business and commerce.</p>
+        </description>
+        <location name="277 Little Lonsdale Street, Melbourne">
+            <lat>-37.8109164</lat>
+            <lng>144.9615567</lng>
+        </location>
+        <contact>
+            <email>info@twopocket.com.au</email>
+            <web>http://twopocket.com.au</web>
+        </contact>
+    </store>
+    
+    <store name="A Treat of France">
+        <img src="treatoffrance.jpg" />
+        <description>
+            <p>A Treat of France serve traditional French croissants, sourdough breads, danishes and cakes.</p>
+        </description>
+        <location name="269 City Road, Southbank">
+            <lat>-37.827174</lat>
+            <lng>144.9568543</lng>
+        </location>
+        <contact>
+            <phone>0481 354 390</phone>
+        </contact>
+    </store>
+    
+    <store name="Alice Nivens">
+        <img src="alicenivens.jpg" />
+        <description>
+            <p>Enter Alice's wonderland to enjoy tasty treats and baked delights created daily. Selections include cakes, muffins, croissants and sandwiches.</p>
+        </description>
+        <location name="Shop 13 Port Phillip Arcade, Melbourne">
+            <lat>-37.8151745</lat>
+            <lng>144.9639578</lng>
+        </location>
+        <contact>
+            <email>alicelives@alicenivenscafe.com</email>
+            <web>http://alicenivenscafe.com</web>
+        </contact>
+    </store>
+    
+    <store name="Blue Buddha">
+        <img src="bluebuddha.jpg" />
+        <description>
+            <p>Blue Buddha cafe supports Fair trade, organic and local produce, while creating a beautiful atmosphere for people to come in and share their stories.</p>
+        </description>
+        <location name="Unit 30, Ground, 1 O'connell Street, North Melbourne">
+            <lat>-37.8056725</lat>
+            <lng>144.9560502</lng>
+        </location>
+        <contact>
+            <phone>0435 726 636</phone>
+            <email>bluebuddhacafe@gmail.com</email>
+        </contact>
+    </store>
+</stores>
